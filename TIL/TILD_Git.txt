@@ -1,0 +1,45 @@
+********************
+******TIL GIT*******
+********************
+
+#Initiate a git directory 
+git init 
+
+#Add local directory to git commit 
+git add .
+
+#Show files 
+git ls-files
+#Show commit status
+git status
+
+#Commit changes 
+git commit -m 'commit messageti'
+git commit -a #add all files changed to the commit 
+
+#See log
+git log
+
+#Clone a project
+git clone git://URI
+
+#Branches 
+#Show branches 
+git branch 
+
+#Create branch 
+git branch branch_name
+
+#Delete branch 
+git branch -d branch_name
+
+#Show branch
+git show-branch
+
+#Change branch to branch_name
+git checkout branch_name
+
+#Pull changes from the repo
+#gets the changes and merges them with the branch
+git pull projects/webapp master
+
