@@ -100,7 +100,105 @@ Super (lookup method)
 	EXTENDS
 		extend model_name
 		Adds the model methods into the class as singleton class methods 
-
 	
+	EXCEPTIONS
+	raise - raises an exception , is not a keyword ( Kernel method )
+	raise ArgumentError
+	raise Some "error text"
+	raise ArgumentError , "Bada Data" , caller[0] //tracebak info filename:line:in method
 
+	rescue ArgumentError
+	rescue => err //the error is stored in err 
+
+	ensure 
+		#this code is allways exectued 
+
+	ARRAYS
+		[] , []= special class methods 
+		x = Array.new 
+		x = Array.new(3) # nil nil nil 
+		x = Array.new(3,"blah") # "blah" , "blah" , "blah" /// blah is the same object 
+		x = Array.[](1,2,3,4,5) 
+		b = Array[1,2,3,4,5]
+	#negative index counts backwards x[-1]
+	x.length x.size #returns numbers of elements 
+	x.nitems #returns number of elements without counting nil 
+
+	x.last x.first #returns last and first element
+
+	x.values_at(2,3,4) #returns an array with the values from the specified indexes
+	SORT
+	x.sort
+	x.sort {|a,b| b <=> a} #reverse sort
+	x.sort_by { |x| File.size(x) }
+	x.detect { |x| x % 6 == 0} #find the first multiple of 6
+
+	x.find {|e| e % 2 == 0}
+
+	x.select{ |e| e %2 == 0 }
+	x.find_all { |e| e %2 == 0 }
+
+	a.grep(/ary/) #January , February
+	a.grep(/ary/) {|m| m.length } # 7,8
+	a.grep(12..24) #23 , 13 , 15 ...
+	#the reject method is complementary to select
+	#the inplace mutator reject! modifies the array 
+	c = [1,2,3,4,5]
+	c.reject! { |e| e % 2 == 0 }
+	# c==[1,3,5]
+	DataSets 
+		a.uniq or a.uniq! #removes duplicates 
+		Operations 
+		a | b #unire
+		a & b #intersectie
+		a + b # does not remove duplicates
+		a - b # A - A inter B
+	map or collect AND the in-place variant map! , collect!
+	x = %w[alpha omega foxtrot]
+	a = x.collect { |w| w[0..0] } # %w[a,o,f] 
+	b = x.collect { |w| w.length } #
+
+	compact method replaces the nil values from the array 
+	a = [1,nil,2,3,nil,4,5,nil,nil]
+	a.compact # 1 2 3 4 5 
+
+
+	a.delete_at(2)
+	a.delte("spam")
+
+	a.clear
+
+	Iterating over an Array
+	each
+	reverse_each
+	each_index
+	each_with_index
+	random_each
+
+
+	HASH
+	Create a new Hash 
+	a1 = Hash.[]("unu",1,"doi",2)
+	a2 = Hash.[]("unu"=>1,"doi"=>2)
+	b1 = Hash["flat",2,"curved",1]
+	b2 = Hash["flat"=>1,"curved"=>2]
+
+	Hash.new #creates an empty hash 
+	Hash.new(x) #creates an empty hash and returns x as a default value but hash is still emply 
+	x.deafult = "nothing"
+	x.inspect #{}
+
+	fetch - raises IndexError exception if the key doesnt exist in the Hash Object
+				- takes a second parameter that serves as default value 
+				- optionaly accepts a block to produce a default value if the key is not found
+	
+	a = {}
+	a["flat"]= 3
+	#{"flat"=>3}
+	a.[] = ("curved",2)
+	#{"flat" => 3 , "curved" => 2 }
+	a.store("angled",5)
+	#{"flat" => 3 , "curved" => 2 ,"angled" => 5 }
+	Deleting key-values pairs
+	clear , delete , delete_if , reject , reject! , shift
 
