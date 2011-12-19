@@ -200,5 +200,8 @@ Super (lookup method)
 	a.store("angled",5)
 	#{"flat" => 3 , "curved" => 2 ,"angled" => 5 }
 	Deleting key-values pairs
-	clear , delete , delete_if , reject , reject! , shift
-
+		clear , delete , shift
+		delete_if , reject , reject! - used in conjection with the required block if true deletes the itema
+	Iterating over 
+		each , each_key , each_pair , each_value 
+	
