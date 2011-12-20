@@ -42,4 +42,4 @@ git checkout branch_name
 #Pull changes from the repo
 #gets the changes and merges them with the branch
 git pull projects/webapp master
-
+git push origin master
