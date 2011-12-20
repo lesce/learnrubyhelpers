@@ -247,3 +247,7 @@ Super (lookup method)
 			a = [1,2,3,4,5,6,8,9]
 			a.partition { |x| x < 5 }
 			# [1,2,3,4 ] [5,6,8,9]
+
+		Iterating by groups 
+			each_slice takes a param n and iterates over that many elements at a time
+			#requires enumerator 
