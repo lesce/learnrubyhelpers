@@ -1,3 +1,4 @@
+
 Local variables - start with a lower letter or undescore and contain num or letters and underscore
 Instances - start with @ and sort the pourpose of storing information for individual objects 
 Class variables  - start with @@  , store information per class hierarchy 
@@ -149,10 +150,10 @@ Super (lookup method)
 	DataSets 
 		a.uniq or a.uniq! #removes duplicates 
 		Operations 
-		a | b #unire
+		a | b #union
 		a & b #intersectie
 		a + b # does not remove duplicates
-		a - b # A - A inter B
+		a - b # A - (A inter B)
 	map or collect AND the in-place variant map! , collect!
 	x = %w[alpha omega foxtrot]
 	a = x.collect { |w| w[0..0] } # %w[a,o,f] 
@@ -184,7 +185,7 @@ Super (lookup method)
 	b2 = Hash["flat"=>1,"curved"=>2]
 
 	Hash.new #creates an empty hash 
-	Hash.new(x) #creates an empty hash and returns x as a default value but hash is still emply 
+	Hash.new(x) #creates an empty hash and returns x as a default value but hash is still empty 
 	x.deafult = "nothing"
 	x.inspect #{}
 
@@ -201,7 +202,48 @@ Super (lookup method)
 	#{"flat" => 3 , "curved" => 2 ,"angled" => 5 }
 	Deleting key-values pairs
 		clear , delete , shift
-		delete_if , reject , reject! - used in conjection with the required block if true deletes the itema
+		delete_if , reject , reject! - used in conjection with the required block if true deletes the item
 	Iterating over 
 		each , each_key , each_pair , each_value 
-	
+	Detecting keys and values 
+		has_key? (or any of its aliases include? key? or member?)
+		a.has_key? "c"
+		has_value? or value?
+	Convert hashes to array with to_a
+		keys will be on the even indexes and values on the odd
+		a.to_a # ["key",value,"key",value]
+		a.keys # returns and array with all the keys 
+		a.values #similar to keys
+
+		a.values_at(1,"2",:sin)
+
+		Selecting , finding key value paris is similar to Arrays 
+		Sorting , sort - returns an array
+		Merging Hashes 
+			hash1.merge(hash2)
+			passing a block to deal with collision
+			hash1.merge(hash2) { |key,old,new| old<new ? old : new }
+		Creating a hash from an array 
+		the array must have an even number of elements 
+		hash_from_array = Hash[*array]
+		Inject Examples
+			a.inject(0) { |a,b| a+b }
+			or
+			a.inject() { |a,b| a+b }
+			
+			a.inject(1) { |a,b| a*b }
+			or 
+			a.inject() { |a,b| a*b }
+
+			a = %w(ana are mere si pere)
+			a.inject do |w,best|
+				w > best ? w : best 
+			end
+		Quantifiers 
+			any? all? - take a block that returns true/false
+			flag1 = nums.any? { |x| x%2 == 0  }
+		Partition 
+			takes a block that returns true/false and partitions the array into 2 arrays [true] [false]
+			a = [1,2,3,4,5,6,8,9]
+			a.partition { |x| x < 5 }
+			# [1,2,3,4 ] [5,6,8,9]
