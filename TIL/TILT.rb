@@ -1,4 +1,4 @@
-
+Covers OOP/Arrays/Hash/Struct
 Local variables - start with a lower letter or undescore and contain num or letters and underscore
 Instances - start with @ and sort the pourpose of storing information for individual objects 
 Class variables  - start with @@  , store information per class hierarchy 
